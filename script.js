@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
         {
             name: "Upstox",
             image: "product1.jpg",
-            payout: "₹500",
+            payout: "₹200",
             description: "This is a brief description of Upstox, including details about features and usage.",
             link: "http://sales.gromo.in/up/N9ggBDHxCz",
             terms: `
