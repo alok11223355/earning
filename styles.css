@@ -73,7 +73,7 @@ body {
 }
 
 .dark-mode .product {
-    background: #37474f; /* Slightly lighter dark color */
+    background: #37474f;
 }
 
 .product:hover {
@@ -150,6 +150,14 @@ body {
 .toggle-terms {
     background: #fbc02d;
     color: black;
+    padding: 8px 12px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 5px;
+    width: auto;
 }
 
 .toggle-dark-mode {
@@ -213,7 +221,13 @@ body {
         margin-bottom: 10px;
     }
 
-    .download-btn, .toggle-terms, .toggle-dark-mode {
+    .toggle-terms {
+        display: block;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .download-btn, .toggle-dark-mode {
         width: 100%;
         padding: 12px;
         font-size: 14px;
