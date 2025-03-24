@@ -16,14 +16,12 @@ body {
 .header-container {
     background: linear-gradient(to right, #64b5f6, #1e88e5);
     color: white;
-    padding: 15px;
+    padding: 10px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: relative;
-    flex-direction: column;
-    gap: 10px;
 }
 
 .dark-mode .header-container {
@@ -56,12 +54,11 @@ body {
 }
 
 .search-box {
-    padding: 12px;
+    padding: 10px;
     width: 100%;
     margin-bottom: 15px;
-    border: 2px solid #1e88e5;
-    border-radius: 8px;
-    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 .product {
@@ -73,8 +70,6 @@ body {
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    flex-direction: column;
-    text-align: center;
 }
 
 .dark-mode .product {
@@ -87,24 +82,22 @@ body {
 }
 
 .product img {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     object-fit: cover;
-    margin-bottom: 10px;
+    margin-right: 15px;
     border-radius: 8px;
     loading: lazy;
 }
 
 .download-btn, .toggle-terms, .toggle-dark-mode {
-    padding: 12px;
+    padding: 10px 15px;
     margin: 5px;
     border: none;
     cursor: pointer;
-    border-radius: 8px;
+    border-radius: 5px;
     font-weight: bold;
     transition: background 0.3s ease;
-    width: 90%;
-    max-width: 200px;
 }
 
 /* Google Login Button Styling */
@@ -112,19 +105,37 @@ body {
     background-color: #4285F4;
     color: white;
     border: none;
-    padding: 12px 20px;
+    padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
-    border-radius: 8px;
+    border-radius: 5px;
     display: block;
     margin: 20px auto;
     text-align: center;
-    width: 90%;
-    max-width: 250px;
 }
 
 #google-login-btn:hover {
     background-color: #357ae8;
+}
+
+/* User Info Section */
+#user-info {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#logout-btn {
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#logout-btn:hover {
+    background-color: #c9302c;
 }
 
 .download-btn {
@@ -139,16 +150,58 @@ body {
 .toggle-terms {
     background: #fbc02d;
     color: black;
+    padding: 8px 12px;
     font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 5px;
+    width: auto;
 }
 
 .toggle-dark-mode {
-    background: #ff9800;
+    background: transparent;
     color: white;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
 }
 
+.toggle-dark-mode::before {
+    content: "\1F319";
+    font-size: 24px;
+}
+
+.terms {
+    display: none;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Ad Section */
+.ad-container {
+    background: #ffeb3b;
+    padding: 15px;
+    text-align: center;
+    margin: 20px 0;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.coin-counter {
+    font-size: 18px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* Responsive Styles */
 @media screen and (max-width: 768px) {
     .header-container {
+        flex-direction: column;
+        text-align: center;
         padding: 15px;
     }
 
@@ -158,17 +211,33 @@ body {
     }
 
     .search-box {
+        width: 100%;
         font-size: 16px;
         padding: 12px;
     }
 
-    .product img {
-        width: 80px;
-        height: 80px;
+    .product {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 12px;
     }
 
-    .download-btn, .toggle-terms, .toggle-dark-mode {
+    .product img {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 10px;
+    }
+
+    .toggle-terms {
+        display: block;
         width: 100%;
+        margin-top: 10px;
+    }
+
+    .download-btn, .toggle-dark-mode {
+        width: 100%;
+        padding: 12px;
         font-size: 14px;
     }
 
