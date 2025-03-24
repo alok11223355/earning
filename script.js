@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
         {
             name: "Upstox",
             image: "https://asset.brandfetch.io/idH_PAk3wi/idhR2wdGPK.jpeg",
-            payout: "₹500",
+            payout: "₹200",
             description: "This is a brief description of Upstox.",
             link: "http://sales.gromo.in/up/N9ggBDHxCz",
             terms: "Upstox account opening T&C apply."
