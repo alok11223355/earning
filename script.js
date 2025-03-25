@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const products = [
         {
             name: "Upstox",
+            category: "Demat Account",
             image: "https://asset.brandfetch.io/idH_PAk3wi/idhR2wdGPK.jpeg",
             payout: "₹200",
             description: "This is a brief description of Upstox.",
@@ -10,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
         },
         {
             name: "Groww",
+            category: "Demat Account",
             image: "https://upload.wikimedia.org/wikipedia/commons/3/39/Groww_app_logo.svg",
             payout: "₹300",
             description: "This is a brief description of Groww.",
@@ -18,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
         },
         {
             name: "Zerodha",
+            category: "Demat Account",
             image: "https://zerodha.com/static/images/logo.svg",
             payout: "₹500",
             description: "This is a brief description of Zerodha.",
@@ -28,6 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const productsContainer = document.getElementById("products-list");
     const searchBox = document.getElementById("search");
+    const categoryButtons = document.querySelectorAll(".category-btn");
 
     function displayProducts(filteredProducts) {
         productsContainer.innerHTML = filteredProducts.map((product, index) => `
@@ -43,15 +47,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
             </div>
         `).join("");
-        
-        document.querySelectorAll(".toggle-terms").forEach(button => {
-            button.addEventListener("click", function () {
-                const index = this.getAttribute("data-index");
-                const termsElement = document.getElementById(`terms-${index}`);
-                termsElement.style.display = termsElement.style.display === "none" ? "block" : "none";
-                this.textContent = termsElement.style.display === "none" ? "View Terms" : "Hide Terms";
-            });
-        });
     }
     
     displayProducts(products);
@@ -60,6 +55,16 @@ document.addEventListener("DOMContentLoaded", function () {
         const searchTerm = searchBox.value.toLowerCase();
         const filteredProducts = products.filter(product => product.name.toLowerCase().includes(searchTerm));
         displayProducts(filteredProducts);
+    });
+
+    categoryButtons.forEach(button => {
+        button.addEventListener("click", function () {
+            document.querySelectorAll(".category-btn").forEach(btn => btn.classList.remove("active"));
+            this.classList.add("active");
+            const selectedCategory = this.getAttribute("data-category");
+            const filteredProducts = selectedCategory === "All" ? products : products.filter(p => p.category === selectedCategory);
+            displayProducts(filteredProducts);
+        });
     });
 
     // Dark Mode Toggle
@@ -81,16 +86,26 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Coin and Ad System
-    let coins = localStorage.getItem("coins") ? parseInt(localStorage.getItem("coins")) : 0;
     const coinCounter = document.querySelector(".coin-counter");
     const adBanner = document.getElementById("adBanner");
 
+    function getStoredCoins() {
+        let storedCoins = localStorage.getItem("coins");
+        return storedCoins ? parseInt(storedCoins) || 0 : 0;
+    }
+
+    let coins = getStoredCoins();
     coinCounter.textContent = `Coins: ${coins}`;
 
+    function getRandomCoins() {
+        return Math.random() < 0.7 ? Math.floor(Math.random() * 4) + 1 : Math.floor(Math.random() * 6) + 5;
+    }
+
     adBanner.addEventListener("click", function () {
-        coins += 10;
+        let earnedCoins = getRandomCoins();
+        coins += earnedCoins;
         localStorage.setItem("coins", coins);
         coinCounter.textContent = `Coins: ${coins}`;
-        alert("You earned 10 coins!");
+        alert(`You earned ${earnedCoins} coins!`);
     });
 });
